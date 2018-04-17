@@ -1,0 +1,1759 @@
+  [1m[35m (192.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (113.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5277929974492897470)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20180414092320)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (114.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "username" character varying, "email" character varying, "address" text, "phone" integer, "website" character varying, "company" text)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180414092320"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAdmins (20180414102412)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (109.9ms)[0m  [1m[35mCREATE TABLE "admins" ("id" bigserial primary key, "token" character varying)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180414102412"]]
+  [1m[35m (33.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-04-14 10:35:39.737037"], ["updated_at", "2018-04-14 10:35:39.737037"]]
+  [1m[35m (11.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5277929974492897470)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2018-04-14 20:41:33 +0800
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/mohie/.rvm/gems/ruby-2.5.0/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/mohie/.rvm/gems/ruby-2.5.0/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (5.2ms)
+Completed 200 OK in 62ms (Views: 35.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2018-04-14 20:41:34 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/admin/create" for 127.0.0.1 at 2018-04-14 20:41:47 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/api/admin/create"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/admin/create" for 127.0.0.1 at 2018-04-14 20:42:57 +0800
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/admin/create"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/admin/create" for 127.0.0.1 at 2018-04-14 20:43:52 +0800
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/admin/create"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/v1/api/admin/create" for 127.0.0.1 at 2018-04-14 20:46:52 +0800
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/v1/api/admin/create"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/v1/api/admin/create" for 127.0.0.1 at 2018-04-14 20:47:01 +0800
+  
+ActionController::RoutingError (No route matches [POST] "/v1/api/admin/create"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/v1/admin/create" for 127.0.0.1 at 2018-04-14 20:48:09 +0800
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/v1/admin/create"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/v1/admin_create" for 127.0.0.1 at 2018-04-14 20:49:07 +0800
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/v1/admin_create"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/v1/admin_create" for 127.0.0.1 at 2018-04-14 20:50:57 +0800
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/v1/admin_create"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/v1/admin_create" for 127.0.0.1 at 2018-04-14 20:53:16 +0800
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/v1/admin_create"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/v1/admins" for 127.0.0.1 at 2018-04-14 20:55:09 +0800
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::AdminsController#create as */*
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant V1::AdminsController::Authentication):
+  
+app/controllers/v1/admins_controller.rb:14:in `create'
+Started POST "/v1/admin_create" for 127.0.0.1 at 2018-04-14 20:56:56 +0800
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::AdminsController#create as */*
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant V1::AdminsController::Authentication):
+  
+app/controllers/v1/admins_controller.rb:14:in `create'
+Started POST "/v1/admin_create" for 127.0.0.1 at 2018-04-14 20:57:00 +0800
+Processing by V1::AdminsController#create as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant V1::AdminsController::Authentication):
+  
+app/controllers/v1/admins_controller.rb:14:in `create'
+Started POST "/v1/admin_create" for 127.0.0.1 at 2018-04-14 21:01:11 +0800
+Processing by V1::AdminsController#create as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant V1::AdminsController::Authentication):
+  
+app/controllers/v1/admins_controller.rb:14:in `create'
+Started POST "/v1/admin_create" for 127.0.0.1 at 2018-04-14 21:02:00 +0800
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::AdminsController#create as */*
+Completed 500 Internal Server Error in 81ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `authentication' for #<V1::AdminsController:0x000000000161cd48>):
+  
+app/controllers/v1/admins_controller.rb:14:in `create'
+Started POST "/v1/admin_create" for 127.0.0.1 at 2018-04-14 21:02:56 +0800
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::AdminsController#create as */*
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 3.9ms)
+
+
+  
+ArgumentError (When assigning attributes, you must pass a hash as an argument.):
+  
+app/controllers/v1/admins_controller.rb:15:in `create'
+Started POST "/v1/admin_create" for 127.0.0.1 at 2018-04-14 21:03:25 +0800
+Processing by V1::AdminsController#create as */*
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (When assigning attributes, you must pass a hash as an argument.):
+  
+app/controllers/v1/admins_controller.rb:16:in `create'
+Started POST "/v1/admin_create" for 127.0.0.1 at 2018-04-14 21:04:01 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/admins_controller.rb:14: syntax error, unexpected =>, expecting keyword_end
+        :token => Authentication.create_random...
+               ^~):
+  
+app/controllers/v1/admins_controller.rb:14: syntax error, unexpected =>, expecting keyword_end
+Started POST "/v1/admin_create" for 127.0.0.1 at 2018-04-14 21:04:22 +0800
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/admins_controller.rb:14: syntax error, unexpected '=', expecting keyword_end
+        :token = Authentication.create_random...
+               ^):
+  
+app/controllers/v1/admins_controller.rb:14: syntax error, unexpected '=', expecting keyword_end
+Started POST "/v1/admin_create" for 127.0.0.1 at 2018-04-14 21:05:12 +0800
+Processing by V1::AdminsController#create as */*
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 4.8ms)
+
+
+  
+ArgumentError (When assigning attributes, you must pass a hash as an argument.):
+  
+app/controllers/v1/admins_controller.rb:17:in `create'
+Started POST "/v1/admin_create" for 127.0.0.1 at 2018-04-14 22:20:46 +0800
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::AdminsController#create as */*
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (31.4ms)[0m  [1m[32mINSERT INTO "admins" DEFAULT VALUES RETURNING "id"[0m
+  [1m[35m (24.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 72ms (Views: 0.3ms | ActiveRecord: 59.7ms)
+
+
+Started POST "/v1/admin_create" for 127.0.0.1 at 2018-04-14 22:22:03 +0800
+Processing by V1::AdminsController#create as */*
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "admins" ("token") VALUES ($1) RETURNING "id"[0m  [["token", "0795e418-100f-41d9-a684-f6900f515379"]]
+  [1m[35m (24.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 34ms (Views: 0.5ms | ActiveRecord: 25.1ms)
+
+
+Started GET "/v1/admins_login" for 127.0.0.1 at 2018-04-14 22:23:18 +0800
+Processing by V1::AdminsController#login as */*
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `header' for #<ActionDispatch::Request:0x00007f68804b2568>
+Did you mean?  headers
+               head?):
+  
+app/controllers/v1/admins_controller.rb:4:in `login'
+Started GET "/v1/admins_login" for 127.0.0.1 at 2018-04-14 22:24:24 +0800
+Processing by V1::AdminsController#login as */*
+  [1m[36mAdmin Load (0.6ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" = $1[0m  [["token", "0795e418-100f-41d9-a684-f6900f515379"]]
+Completed 200 OK in 24ms (Views: 0.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 14:59:49 +0800
+  [1m[35m (29.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (18.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 400 Bad Request in 73ms (Views: 0.4ms | ActiveRecord: 22.5ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 15:01:20 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}, "user"=>{"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}}}
+Unpermitted parameters: :suite, :city
+Unpermitted parameter: :company
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (32.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "address", "phone", "website") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Leanne Graham"], ["username", "Bret"], ["email", "Sincere@april.biz"], ["address", "{\"street\"=>\"Kulas Light\", \"zipcode\"=>\"92998-3874\", \"geo\"=>{\"lng\"=>\"81.1496\", \"lat\"=>\"-37.3159\"}}"], ["phone", 1], ["website", "hildegard.org"]]
+  [1m[35m (32.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 80ms (Views: 0.4ms | ActiveRecord: 72.4ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 15:01:27 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 30ms (Views: 1.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 15:12:46 +0800
+  
+AbstractController::ActionNotFound (The action 'delete' could not be found for V1::UsersController):
+  
+actionpack (5.1.6) lib/abstract_controller/base.rb:119:in `process'
+actionpack (5.1.6) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.6) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:844:in `call'
+rack (2.0.4) lib/rack/etag.rb:25:in `call'
+rack (2.0.4) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.4) lib/rack/head.rb:12:in `call'
+activerecord (5.1.6) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 15:13:17 +0800
+Processing by V1::UsersController#destroy as */*
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[35m (23.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 54ms (Views: 0.2ms | ActiveRecord: 32.4ms)
+
+
+Started GET "/v1/admins_login" for 127.0.0.1 at 2018-04-15 15:13:27 +0800
+Processing by V1::AdminsController#login as */*
+  [1m[36mAdmin Load (44.9ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" = $1[0m  [["token", "0795e418-100f-41d9-a684-f6900f515379"]]
+Completed 200 OK in 87ms (Views: 0.2ms | ActiveRecord: 48.5ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 15:13:43 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 400 Bad Request in 2ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 15:14:06 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}, "user"=>{"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "address", "phone", "website", "company") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Leanne Graham"], ["username", "Bret"], ["email", "Sincere@april.biz"], ["address", "{\"street\"=>\"Kulas Light\", \"city\"=>\"Gwenborough\", \"suite\"=>\"Apt. 556\", \"zipcode\"=>\"92998-3874\", \"geo\"=>{\"lng\"=>\"81.1496\", \"lat\"=>\"-37.3159\"}}"], ["phone", 1], ["website", "hildegard.org"], ["company", "{\"name\"=>\"Romaguera-Crona\", \"catchPhrase\"=>\"Multi-layered client-server neural-net\", \"bs\"=>\"harness real-time e-markets\"}"]]
+  [1m[35m (17.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 22ms (Views: 0.6ms | ActiveRecord: 18.5ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 15:14:29 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 15:16:27 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.4ms)
+
+
+  
+TypeError (no implicit conversion of User::ActiveRecord_Relation into String):
+  
+app/controllers/v1/users_controller.rb:6:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 15:17:34 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 92ms (ActiveRecord: 1.4ms)
+
+
+  
+NameError (undefined local variable or method `json' for #<V1::UsersController:0x0000000003b568e8>
+Did you mean?  JSON):
+  
+app/controllers/v1/users_controller.rb:6:in `block in index'
+app/controllers/v1/users_controller.rb:5:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 15:17:47 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.7ms)
+
+
+  
+TypeError (no implicit conversion of User into String):
+  
+app/controllers/v1/users_controller.rb:6:in `block in index'
+app/controllers/v1/users_controller.rb:5:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:25:02 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 12ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:27:04 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.8ms)
+
+
+  
+NoMethodError (undefined method `serializable_hash' for "Leanne Graham":String):
+  
+app/controllers/v1/users_controller.rb:6:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:27:41 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `users' for #<V1::UsersController:0x00007fefe881c420>):
+  
+app/controllers/v1/users_controller.rb:6:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:28:46 +0800
+Processing by V1::UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `serializable_hash' for "Leanne Graham":String):
+  
+app/controllers/v1/users_controller.rb:6:in `index'
+Started GET "/favicon.ico" for 127.0.0.1 at 2018-04-15 16:28:47 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:29:06 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:6: syntax error, unexpected =>, expecting ')'
+...y", :data => users,(:include => [   
+...                             ^~
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:13: syntax error, unexpected ',', expecting =>
+...:name , :catchPhrase , :bs]}]),
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:6: syntax error, unexpected =>, expecting ')'
+app/controllers/v1/users_controller.rb:13: syntax error, unexpected ',', expecting =>
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:29:19 +0800
+Processing by V1::UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 28ms (Views: 0.6ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:29:20 +0800
+Processing by V1::UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:29:21 +0800
+Processing by V1::UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:29:29 +0800
+Processing by V1::UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:30:02 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected ',', expecting =>
+...        {:address => {:street , :city , :suite , :zipcode , ...
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+...pcode , {:geo =>[:lng , :lat]}}},
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:47: syntax error, unexpected ',', expecting =>
+...          {:company => {:name , :catchPhrase , :bs}}
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected ',', expecting =>
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+app/controllers/v1/users_controller.rb:47: syntax error, unexpected ',', expecting =>
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:30:05 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected ',', expecting =>
+...        {:address => {:street , :city , :suite , :zipcode , ...
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+...pcode , {:geo =>[:lng , :lat]}}},
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:47: syntax error, unexpected ',', expecting =>
+...          {:company => {:name , :catchPhrase , :bs}}
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected ',', expecting =>
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+app/controllers/v1/users_controller.rb:47: syntax error, unexpected ',', expecting =>
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:30:08 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected ',', expecting =>
+...        {:address => {:street , :city , :suite , :zipcode , ...
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+...pcode , {:geo =>[:lng , :lat]}}},
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:47: syntax error, unexpected ',', expecting =>
+...          {:company => {:name , :catchPhrase , :bs}}
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected ',', expecting =>
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+app/controllers/v1/users_controller.rb:47: syntax error, unexpected ',', expecting =>
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:34:35 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:6: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+...lly", :data => users..delete! '\\', :code => 200}, status: :...
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:6: syntax error, unexpected ',', expecting keyword_end
+..., :data => users..delete! '\\', :code => 200}, status: :ok
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:6: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+app/controllers/v1/users_controller.rb:6: syntax error, unexpected ',', expecting keyword_end
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:34:48 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:6: syntax error, unexpected tSTRING_BEG, expecting '}'
+...ully", :data => users.delete! '\\', :code => 200}, status: :...
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:6: syntax error, unexpected ',', expecting keyword_end
+...", :data => users.delete! '\\', :code => 200}, status: :ok
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:6: syntax error, unexpected tSTRING_BEG, expecting '}'
+app/controllers/v1/users_controller.rb:6: syntax error, unexpected ',', expecting keyword_end
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:36:02 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 4.3ms)
+
+
+  
+NoMethodError (undefined method `gsub' for #<User::ActiveRecord_Relation:0x000000000402a388>):
+  
+app/controllers/v1/users_controller.rb:6:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:37:43 +0800
+Processing by V1::UsersController#index as */*
+Completed 500 Internal Server Error in 93ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `users_list' for #<V1::UsersController:0x00007fefe83e0938>):
+  
+app/controllers/v1/users_controller.rb:5:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:37:58 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 8.0ms)
+
+
+  
+NoMethodError (undefined method `gsub' for #<User:0x00000000040c0220>):
+  
+app/controllers/v1/users_controller.rb:7:in `block in index'
+app/controllers/v1/users_controller.rb:6:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:38:37 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 23ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:39:27 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 15ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:39:57 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 17ms (Views: 0.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:40:53 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.3ms)
+
+
+  
+JSON::ParserError (765: unexpected token at '{"street"=>"Kulas Light", "city"=>"Gwenborough", "suite"=>"Apt. 556", "zipcode"=>"92998-3874", "geo"=>{"lng"=>"81.1496", "lat"=>"-37.3159"}}'):
+  
+app/controllers/v1/users_controller.rb:7:in `block in index'
+app/controllers/v1/users_controller.rb:6:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:43:33 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 19ms (Views: 0.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:44:32 +0800
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 18ms (Views: 0.4ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:45:10 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 12ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:46:06 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.3ms)
+
+
+  
+JSON::ParserError (765: unexpected token at '{'street'=>'Kulas Light', 'city'=>'Gwenborough', 'suite'=>'Apt. 556', 'zipcode'=>'92998-3874', 'geo'=>{'lng'=>'81.1496', 'lat'=>'-37.3159'}}'):
+  
+app/controllers/v1/users_controller.rb:7:in `block in index'
+app/controllers/v1/users_controller.rb:6:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:46:50 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.3ms)
+
+
+  
+JSON::ParserError (765: unexpected token at '{'street'=>'Kulas Light', 'city'=>'Gwenborough', 'suite'=>'Apt. 556', 'zipcode'=>'92998-3874', 'geo'=>{'lng'=>'81.1496', 'lat'=>'-37.3159'}}'):
+  
+app/controllers/v1/users_controller.rb:7:in `block in index'
+app/controllers/v1/users_controller.rb:6:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 16:48:31 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 24ms (Views: 0.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 17:55:12 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected ',', expecting =>
+...        [:address => {:street , :city , :suite , :zipcode , ...
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+...pcode , {:geo =>[:lng , :lat]}}],
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:47: syntax error, unexpected ',', expecting =>
+...          [:company => {:name , :catchPhrase , :bs}]
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected ',', expecting =>
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+app/controllers/v1/users_controller.rb:47: syntax error, unexpected ',', expecting =>
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 17:58:14 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected ',', expecting =>
+...        [:address => {:street , :city , :suite , :zipcode , ...
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+...pcode , {:geo =>[:lng , :lat]}}],
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:47: syntax error, unexpected ',', expecting =>
+...          [:company => {:name , :catchPhrase , :bs}]
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected ',', expecting =>
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+app/controllers/v1/users_controller.rb:47: syntax error, unexpected ',', expecting =>
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 17:58:24 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected ',', expecting =>
+...        [:address => {:street , :city , :suite , :zipcode , ...
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+...pcode , {:geo =>[:lng , :lat]}}],
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:47: syntax error, unexpected ',', expecting =>
+...          [:company => {:name , :catchPhrase , :bs}]
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected ',', expecting =>
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+app/controllers/v1/users_controller.rb:47: syntax error, unexpected ',', expecting =>
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 18:01:04 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:6: syntax error, unexpected =>, expecting keyword_end
+...       render :json => users => include[
+...                             ^~
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:10: syntax error, unexpected ',', expecting =>
+...        [:address => {:street , :city , :suite , :zipcode , ...
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:10: syntax error, unexpected '}', expecting keyword_end
+...pcode , {:geo =>[:lng , :lat]}}],
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:13: syntax error, unexpected ',', expecting =>
+...          [:company => {:name , :catchPhrase , :bs}]  
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:14: syntax error, unexpected ',', expecting keyword_end
+...ssage => "Called Successfully", :code => 200, status: :ok
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected ',', expecting =>
+...        [:address => {:street , :city , :suite , :zipcode , ...
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+...pcode , {:geo =>[:lng , :lat]}}],
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:47: syntax error, unexpected ',', expecting =>
+...          [:company => {:name , :catchPhrase , :bs}]
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:6: syntax error, unexpected =>, expecting keyword_end
+app/controllers/v1/users_controller.rb:10: syntax error, unexpected ',', expecting =>
+app/controllers/v1/users_controller.rb:10: syntax error, unexpected '}', expecting keyword_end
+app/controllers/v1/users_controller.rb:13: syntax error, unexpected ',', expecting =>
+app/controllers/v1/users_controller.rb:14: syntax error, unexpected ',', expecting keyword_end
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected ',', expecting =>
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+app/controllers/v1/users_controller.rb:47: syntax error, unexpected ',', expecting =>
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 18:02:26 +0800
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 21ms (Views: 0.4ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 18:04:11 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:6: syntax error, unexpected ..., expecting ']'
+...@users.to_json(:include => [...], :methods => [...]) }
+...                            ^~~
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:45: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/v1/users_controller.rb:6: syntax error, unexpected ..., expecting ']'
+app/controllers/v1/users_controller.rb:45: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 18:22:55 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:6: syntax error, unexpected ..., expecting ']'
+...@users.to_json(:include => [...], :methods => [...]) }
+...                            ^~~
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:45: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/v1/users_controller.rb:6: syntax error, unexpected ..., expecting ']'
+app/controllers/v1/users_controller.rb:45: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 18:24:02 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Completed 500 Internal Server Error in 99ms (ActiveRecord: 0.0ms)
+
+
+  
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+NameError (undefined local variable or method `users' for #<V1::UsersController:0x00007f1f881fcf08>
+Did you mean?  @users):
+  
+app/controllers/v1/users_controller.rb:5:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 18:24:03 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Completed 500 Internal Server Error in 129ms (ActiveRecord: 0.0ms)
+
+
+  
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+NameError (undefined local variable or method `users' for #<V1::UsersController:0x00007f1f88265468>
+Did you mean?  @users):
+  
+app/controllers/v1/users_controller.rb:5:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 18:24:17 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 27ms (Views: 0.4ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/autocomplete?format=json" for 127.0.0.1 at 2018-04-15 18:45:13 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/autocomplete"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 18:48:11 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 42ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 18:48:27 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 14ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 18:53:09 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 18ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 18:53:44 +0800
+Processing by V1::UsersController#destroy as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  [1m[35m (24.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 42ms (Views: 0.3ms | ActiveRecord: 25.9ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 18:53:47 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}, "user"=>{"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}}}
+Unpermitted parameters: :address, :company
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "phone", "website") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Leanne Graham"], ["username", "Bret"], ["email", "Sincere@april.biz"], ["phone", 1], ["website", "hildegard.org"]]
+  [1m[35m (20.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 29ms (Views: 0.6ms | ActiveRecord: 21.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 18:53:52 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 18:57:02 +0800
+Processing by V1::UsersController#destroy as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  [1m[35m (21.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 43ms (Views: 0.5ms | ActiveRecord: 23.0ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 18:57:10 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}, "user"=>{"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "address", "phone", "website", "company") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Leanne Graham"], ["username", "Bret"], ["email", "Sincere@april.biz"], ["address", "{\"street\"=>\"Kulas Light\", \"city\"=>\"Gwenborough\", \"suite\"=>\"Apt. 556\", \"zipcode\"=>\"92998-3874\", \"geo\"=>{\"lng\"=>\"81.1496\", \"lat\"=>\"-37.3159\"}}"], ["phone", 1], ["website", "hildegard.org"], ["company", "{\"name\"=>\"Romaguera-Crona\", \"catchPhrase\"=>\"Multi-layered client-server neural-net\", \"bs\"=>\"harness real-time e-markets\"}"]]
+  [1m[35m (24.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 31ms (Views: 1.0ms | ActiveRecord: 25.1ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 18:57:14 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 18:59:30 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 17ms (Views: 1.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:01:09 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 18ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:01:46 +0800
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:01:46 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 17ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 27ms (Views: 0.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:01:53 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:02:15 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 27ms (Views: 0.9ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:02:52 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.3ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 4, expected 1..2)):
+  
+app/controllers/v1/users_controller.rb:8:in `gsub'
+app/controllers/v1/users_controller.rb:8:in `block in index'
+app/controllers/v1/users_controller.rb:7:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:03:29 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 17ms (Views: 0.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:03:59 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 18ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:04:54 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 19ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:05:22 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.5ms)
+
+
+  
+TypeError (no implicit conversion of Class into String):
+  
+app/controllers/v1/users_controller.rb:8:in `block in index'
+app/controllers/v1/users_controller.rb:7:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:05:46 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 21ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:06:14 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 36ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:07:27 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 21ms (Views: 0.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:07:32 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:08:04 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 22ms (Views: 0.4ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:09:18 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 23ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:32:20 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `serializable_hash' for #<String:0x00007f1f884b5858>):
+  
+app/controllers/v1/users_controller.rb:5:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:32:44 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `serializable_hash' for #<String:0x00007f1f8829b798>):
+  
+app/controllers/v1/users_controller.rb:5:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:51:19 +0800
+Processing by V1::UsersController#index as */*
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (too few arguments):
+  
+app/controllers/v1/users_controller.rb:5:in `format'
+app/controllers/v1/users_controller.rb:5:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:51:56 +0800
+Processing by V1::UsersController#index as */*
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (too few arguments):
+  
+app/controllers/v1/users_controller.rb:5:in `format'
+app/controllers/v1/users_controller.rb:5:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:52:25 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:5: syntax error, unexpected '}', expecting =>
+...mat.json { render json: {users}.to_json}
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:5: syntax error, unexpected '}', expecting =>
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:53:08 +0800
+Processing by V1::UsersController#index as */*
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (too few arguments):
+  
+app/controllers/v1/users_controller.rb:5:in `format'
+app/controllers/v1/users_controller.rb:5:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 19:54:05 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 17ms (Views: 0.4ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:07:13 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `children' for #<User:0x00000000030b0790>):
+  
+app/models/user.rb:5:in `to_node'
+app/controllers/v1/users_controller.rb:7:in `block in index'
+app/controllers/v1/users_controller.rb:6:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:21:47 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 24ms (Views: 0.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:22:42 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 2.0ms)
+
+
+  
+TypeError (no implicit conversion of User into String):
+  
+app/controllers/v1/users_controller.rb:7:in `block in index'
+app/controllers/v1/users_controller.rb:6:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:23:11 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 20:23:59 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:41: syntax error, unexpected ':', expecting =>
+...                    {:address :[:street , :city , :suite , :...
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:41: syntax error, unexpected '}', expecting keyword_end
+...code , {:geo =>[:lng , :lat]}]},
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected ':', expecting =>
+...                    {:company :[:name , :catchPhrase , :bs]}
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+... :[:name , :catchPhrase , :bs]}
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:41: syntax error, unexpected ':', expecting =>
+app/controllers/v1/users_controller.rb:41: syntax error, unexpected '}', expecting keyword_end
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected ':', expecting =>
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 20:27:43 +0800
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:41: syntax error, unexpected ','
+...            {address:[street: , city: ]}
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:41: syntax error, unexpected ','
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 20:28:28 +0800
+Processing by V1::UsersController#destroy as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  [1m[35m (17.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 42ms (Views: 0.3ms | ActiveRecord: 24.6ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 20:28:42 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}, "user"=>{"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}}}
+Unpermitted parameters: :suite, :zipcode, :geo
+Unpermitted parameters: :phone, :website, :company
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "address") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Leanne Graham"], ["username", "Bret"], ["email", "Sincere@april.biz"], ["address", "{\"street\"=>\"Kulas Light\", \"city\"=>\"Gwenborough\"}"]]
+  [1m[35m (18.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 24ms (Views: 0.5ms | ActiveRecord: 19.5ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:28:55 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/admins_login" for 127.0.0.1 at 2018-04-15 20:29:47 +0800
+Processing by V1::AdminsController#login as */*
+  [1m[36mAdmin Load (0.7ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" = $1[0m  [["token", "0795e418-100f-41d9-a684-f6900f515379"]]
+Completed 200 OK in 14ms (Views: 0.7ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 20:33:34 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected ':', expecting =>
+...                    {:company :[:name , :catchPhrase , :bs]....
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+... , :catchPhrase , :bs].to_json}
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected ':', expecting =>
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 20:33:47 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected ':', expecting =>
+...                    {:company :[:name , :catchPhrase , :bs]}
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+... :[:name , :catchPhrase , :bs]}
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected ':', expecting =>
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 20:33:48 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected ':', expecting =>
+...                    {:company :[:name , :catchPhrase , :bs]}
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+... :[:name , :catchPhrase , :bs]}
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected ':', expecting =>
+app/controllers/v1/users_controller.rb:44: syntax error, unexpected '}', expecting keyword_end
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 20:34:12 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:39: syntax error, unexpected ':', expecting =>
+...                    {:company :[:name , :catchPhrase , :bs]}
+...                              ^
+/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:39: syntax error, unexpected '}', expecting keyword_end
+... :[:name , :catchPhrase , :bs]}
+...                              ^):
+  
+app/controllers/v1/users_controller.rb:39: syntax error, unexpected ':', expecting =>
+app/controllers/v1/users_controller.rb:39: syntax error, unexpected '}', expecting keyword_end
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 20:35:12 +0800
+Processing by V1::UsersController#destroy as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 5]]
+  [1m[35m (22.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 49ms (Views: 0.3ms | ActiveRecord: 29.6ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 20:35:31 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}, "user"=>{"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "address", "phone", "website", "company") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Leanne Graham"], ["username", "Bret"], ["email", "Sincere@april.biz"], ["address", "{\"street\"=>\"Kulas Light\", \"city\"=>\"Gwenborough\", \"suite\"=>\"Apt. 556\", \"zipcode\"=>\"92998-3874\", \"geo\"=>{\"lng\"=>\"81.1496\", \"lat\"=>\"-37.3159\"}}"], ["phone", 1], ["website", "hildegard.org"], ["company", "{\"name\"=>\"Romaguera-Crona\", \"catchPhrase\"=>\"Multi-layered client-server neural-net\", \"bs\"=>\"harness real-time e-markets\"}"]]
+  [1m[35m (20.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 26ms (Views: 0.6ms | ActiveRecord: 21.0ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:35:37 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:36:07 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:37:36 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 204 No Content in 16ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:37:54 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:38:25 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:38:59 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.3ms)
+
+
+  
+ArgumentError (too few arguments):
+  
+app/controllers/v1/users_controller.rb:7:in `format'
+app/controllers/v1/users_controller.rb:7:in `block in index'
+app/controllers/v1/users_controller.rb:6:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:39:57 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `at_json' for #<User:0x00007fd0e42388d8>
+Did you mean?  as_json
+               to_json):
+  
+app/controllers/v1/users_controller.rb:7:in `block in index'
+app/controllers/v1/users_controller.rb:6:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:40:10 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 204 No Content in 16ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:40:45 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `json' for #<V1::UsersController:0x00007fd0e42d6f88>
+Did you mean?  JSON):
+  
+app/controllers/v1/users_controller.rb:8:in `block in index'
+app/controllers/v1/users_controller.rb:6:in `index'
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:41:01 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 20:41:14 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 26ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 21:52:13 +0800
+Processing by V1::UsersController#destroy as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 6]]
+  [1m[35m (17.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 33ms (Views: 0.3ms | ActiveRecord: 18.0ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 21:52:18 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}, "user"=>{"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "address", "phone", "website", "company") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Leanne Graham"], ["username", "Bret"], ["email", "Sincere@april.biz"], ["address", "{\"street\"=>\"Kulas Light\", \"city\"=>\"Gwenborough\", \"suite\"=>\"Apt. 556\", \"zipcode\"=>\"92998-3874\", \"geo\"=>{\"lng\"=>\"81.1496\", \"lat\"=>\"-37.3159\"}}"], ["phone", 1], ["website", "hildegard.org"], ["company", "{\"name\"=>\"Romaguera-Crona\", \"catchPhrase\"=>\"Multi-layered client-server neural-net\", \"bs\"=>\"harness real-time e-markets\"}"]]
+  [1m[35m (13.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 19ms (Views: 0.6ms | ActiveRecord: 13.7ms)
+
+
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 21:52:53 +0800
+Processing by V1::UsersController#destroy as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 7]]
+  [1m[35m (18.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 44ms (Views: 0.3ms | ActiveRecord: 25.2ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 21:52:56 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}, "user"=>{"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "address", "phone", "website", "company") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Leanne Graham"], ["username", "Bret"], ["email", "Sincere@april.biz"], ["address", "{\"street\"=>\"Kulas Light\", \"city\"=>\"Gwenborough\", \"suite\"=>\"Apt. 556\", \"zipcode\"=>\"92998-3874\", \"geo\"=>{\"lng\"=>\"81.1496\", \"lat\"=>\"-37.3159\"}}"], ["phone", 1], ["website", "hildegard.org"], ["company", "{\"name\"=>\"Romaguera-Crona\", \"catchPhrase\"=>\"Multi-layered client-server neural-net\", \"bs\"=>\"harness real-time e-markets\"}"]]
+  [1m[35m (14.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 22ms (Views: 1.1ms | ActiveRecord: 15.4ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 21:53:00 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 21:54:52 +0800
+Processing by V1::UsersController#destroy as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 8]]
+  [1m[35m (30.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 71ms (Views: 0.3ms | ActiveRecord: 32.7ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 21:55:28 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}, "user"=>{"name"=>"Leanne Graham", "username"=>"Bret", "email"=>"Sincere@april.biz", "address"=>{"street"=>"Kulas Light", "suite"=>"Apt. 556", "city"=>"Gwenborough", "zipcode"=>"92998-3874", "geo"=>{"lat"=>"-37.3159", "lng"=>"81.1496"}}, "phone"=>"1-770-736-8031 x56442", "website"=>"hildegard.org", "company"=>{"name"=>"Romaguera-Crona", "catchPhrase"=>"Multi-layered client-server neural-net", "bs"=>"harness real-time e-markets"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "address", "phone", "website", "company") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Leanne Graham"], ["username", "Bret"], ["email", "Sincere@april.biz"], ["address", "{\"street\":\"Kulas Light\",\"city\":\"Gwenborough\",\"suite\":\"Apt. 556\",\"zipcode\":\"92998-3874\",\"geo\":{\"lng\":\"81.1496\",\"lat\":\"-37.3159\"}}"], ["phone", 1], ["website", "hildegard.org"], ["company", "{\"name\":\"Romaguera-Crona\",\"catchPhrase\":\"Multi-layered client-server neural-net\",\"bs\":\"harness real-time e-markets\"}"]]
+  [1m[35m (26.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 33ms (Views: 0.9ms | ActiveRecord: 26.5ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 21:55:54 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 24ms (Views: 0.5ms | ActiveRecord: 5.6ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 22:00:34 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Ervin Howell", "username"=>"Antonette", "email"=>"Shanna@melissa.tv", "address"=>{"street"=>"Victor Plains", "suite"=>"Suite 879", "city"=>"Wisokyburgh", "zipcode"=>"90566-7771", "geo"=>{"lat"=>"-43.9509", "lng"=>"-34.4618"}}, "phone"=>"010-692-6593 x09125", "website"=>"anastasia.net", "company"=>{"name"=>"Deckow-Crist", "catchPhrase"=>"Proactive didactic contingency", "bs"=>"synergize scalable supply-chains"}, "user"=>{"name"=>"Ervin Howell", "username"=>"Antonette", "email"=>"Shanna@melissa.tv", "address"=>{"street"=>"Victor Plains", "suite"=>"Suite 879", "city"=>"Wisokyburgh", "zipcode"=>"90566-7771", "geo"=>{"lat"=>"-43.9509", "lng"=>"-34.4618"}}, "phone"=>"010-692-6593 x09125", "website"=>"anastasia.net", "company"=>{"name"=>"Deckow-Crist", "catchPhrase"=>"Proactive didactic contingency", "bs"=>"synergize scalable supply-chains"}}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (67.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "address", "phone", "website", "company") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Ervin Howell"], ["username", "Antonette"], ["email", "Shanna@melissa.tv"], ["address", "{\"street\":\"Victor Plains\",\"city\":\"Wisokyburgh\",\"suite\":\"Suite 879\",\"zipcode\":\"90566-7771\",\"geo\":{\"lng\":\"-34.4618\",\"lat\":\"-43.9509\"}}"], ["phone", 10], ["website", "anastasia.net"], ["company", "{\"name\":\"Deckow-Crist\",\"catchPhrase\":\"Proactive didactic contingency\",\"bs\":\"synergize scalable supply-chains\"}"]]
+  [1m[35m (28.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 110ms (Views: 1.6ms | ActiveRecord: 96.2ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:00:46 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 5ms (Views: 1.4ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 22:01:23 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Clementine Bauch", "username"=>"Samantha", "email"=>"Nathan@yesenia.net", "address"=>{"street"=>"Douglas Extension", "suite"=>"Suite 847", "city"=>"McKenziehaven", "zipcode"=>"59590-4157", "geo"=>{"lat"=>"-68.6102", "lng"=>"-47.0653"}}, "phone"=>"1-463-123-4447", "website"=>"ramiro.info", "company"=>{"name"=>"Romaguera-Jacobson", "catchPhrase"=>"Face to face bifurcated interface", "bs"=>"e-enable strategic applications"}, "user"=>{"name"=>"Clementine Bauch", "username"=>"Samantha", "email"=>"Nathan@yesenia.net", "address"=>{"street"=>"Douglas Extension", "suite"=>"Suite 847", "city"=>"McKenziehaven", "zipcode"=>"59590-4157", "geo"=>{"lat"=>"-68.6102", "lng"=>"-47.0653"}}, "phone"=>"1-463-123-4447", "website"=>"ramiro.info", "company"=>{"name"=>"Romaguera-Jacobson", "catchPhrase"=>"Face to face bifurcated interface", "bs"=>"e-enable strategic applications"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "address", "phone", "website", "company") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Clementine Bauch"], ["username", "Samantha"], ["email", "Nathan@yesenia.net"], ["address", "{\"street\":\"Douglas Extension\",\"city\":\"McKenziehaven\",\"suite\":\"Suite 847\",\"zipcode\":\"59590-4157\",\"geo\":{\"lng\":\"-47.0653\",\"lat\":\"-68.6102\"}}"], ["phone", 1], ["website", "ramiro.info"], ["company", "{\"name\":\"Romaguera-Jacobson\",\"catchPhrase\":\"Face to face bifurcated interface\",\"bs\":\"e-enable strategic applications\"}"]]
+  [1m[35m (18.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 25ms (Views: 0.7ms | ActiveRecord: 19.5ms)
+
+
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 22:09:59 +0800
+  
+SyntaxError (/home/mohie/Desktop/assessment-12-4/app/app/controllers/v1/users_controller.rb:48: syntax error, unexpected ':', expecting keyword_end
+        return json: {:message => "Access Denied"...
+                   ^):
+  
+app/controllers/v1/users_controller.rb:48: syntax error, unexpected ':', expecting keyword_end
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 22:10:25 +0800
+Processing by V1::UsersController#destroy as */*
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `request' for Authentication:Class
+Did you mean?  require):
+  
+app/services/authentication.rb:16:in `is_login?'
+app/controllers/v1/users_controller.rb:47:in `is_authenticate_user?'
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 22:11:44 +0800
+Processing by V1::UsersController#destroy as */*
+  [1m[36mAdmin Load (36.6ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" IS NULL[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 9]]
+  [1m[35m (50.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 10]]
+  [1m[35m (9.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 11]]
+  [1m[35m (9.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 186ms (Views: 0.2ms | ActiveRecord: 141.9ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:12:01 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" IS NULL[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 400 Bad Request in 5ms (Views: 0.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:12:04 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" IS NULL[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 400 Bad Request in 3ms (Views: 0.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:13:07 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" IS NULL[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 400 Bad Request in 11ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:14:11 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mAdmin Load (0.8ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" IS NULL[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 400 Bad Request in 11ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:14:39 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" IS NULL[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 400 Bad Request in 13ms (Views: 0.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:15:27 +0800
+Processing by V1::UsersController#index as */*
+Filter chain halted as :is_authenticate_user? rendered or redirected
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 22:16:13 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Clementine Bauch", "username"=>"Samantha", "email"=>"Nathan@yesenia.net", "address"=>{"street"=>"Douglas Extension", "suite"=>"Suite 847", "city"=>"McKenziehaven", "zipcode"=>"59590-4157", "geo"=>{"lat"=>"-68.6102", "lng"=>"-47.0653"}}, "phone"=>"1-463-123-4447", "website"=>"ramiro.info", "company"=>{"name"=>"Romaguera-Jacobson", "catchPhrase"=>"Face to face bifurcated interface", "bs"=>"e-enable strategic applications"}, "user"=>{"name"=>"Clementine Bauch", "username"=>"Samantha", "email"=>"Nathan@yesenia.net", "address"=>{"street"=>"Douglas Extension", "suite"=>"Suite 847", "city"=>"McKenziehaven", "zipcode"=>"59590-4157", "geo"=>{"lat"=>"-68.6102", "lng"=>"-47.0653"}}, "phone"=>"1-463-123-4447", "website"=>"ramiro.info", "company"=>{"name"=>"Romaguera-Jacobson", "catchPhrase"=>"Face to face bifurcated interface", "bs"=>"e-enable strategic applications"}}}
+Filter chain halted as :is_authenticate_user? rendered or redirected
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:16:41 +0800
+Processing by V1::UsersController#index as */*
+Filter chain halted as :is_authenticate_user? rendered or redirected
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:17:10 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 400 Bad Request in 6ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:21:58 +0800
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::UsersController#index as */*
+  [1m[36mAdmin Load (0.4ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" = $1[0m  [["token", "0795e418-100f-41d9-a684-f6900f515379"]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 400 Bad Request in 50ms (Views: 0.3ms | ActiveRecord: 9.3ms)
+
+
+  [1m[36mAdmin Load (0.4ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."token" = $1 LIMIT $2[0m  [["token", "dafsdfmsdfm"], ["LIMIT", 11]]
+  [1m[36mAdmin Load (0.7ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."token" = $1 LIMIT $2[0m  [["token", "dafsdfmsdfm"], ["LIMIT", 11]]
+  [1m[36mAdmin Load (0.5ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" = $1[0m  [["token", "dafsdfmsdfm"]]
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:24:49 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mAdmin Load (0.3ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" = $1[0m  [["token", "nmdfjnsjdf-sdfsdfsdf=sdfq23e3d2frddf"]]
+Filter chain halted as :is_authenticate_user? rendered or redirected
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:25:04 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mAdmin Load (0.8ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" = $1[0m  [["token", "0795e418-100f-41d9-a684-f6900f515379"]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 400 Bad Request in 15ms (Views: 0.2ms | ActiveRecord: 7.5ms)
+
+
+Started POST "/v1/delete_users" for 127.0.0.1 at 2018-04-15 22:26:44 +0800
+  
+ActionController::RoutingError (No route matches [POST] "/v1/delete_users"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 22:26:53 +0800
+Processing by V1::UsersController#destroy as */*
+Filter chain halted as :is_authenticate_user? rendered or redirected
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 22:26:55 +0800
+Processing by V1::UsersController#destroy as */*
+Filter chain halted as :is_authenticate_user? rendered or redirected
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/v1/delete_users" for 127.0.0.1 at 2018-04-15 22:27:09 +0800
+Processing by V1::UsersController#destroy as */*
+  [1m[36mAdmin Load (1.0ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" = $1[0m  [["token", "0795e418-100f-41d9-a684-f6900f515379"]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 22:30:14 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Clementine Bauch", "username"=>"Samantha", "email"=>"Nathan@yesenia.net", "address"=>{"street"=>"Douglas Extension", "suite"=>"Suite 847", "city"=>"McKenziehaven", "zipcode"=>"59590-4157", "geo"=>{"lat"=>"-68.6102", "lng"=>"-47.0653"}}, "phone"=>"1-463-123-4447", "website"=>"ramiro.info", "company"=>{"name"=>"Romaguera-Jacobson", "catchPhrase"=>"Face to face bifurcated interface", "bs"=>"e-enable strategic applications"}, "user"=>{"name"=>"Clementine Bauch", "username"=>"Samantha", "email"=>"Nathan@yesenia.net", "address"=>{"street"=>"Douglas Extension", "suite"=>"Suite 847", "city"=>"McKenziehaven", "zipcode"=>"59590-4157", "geo"=>{"lat"=>"-68.6102", "lng"=>"-47.0653"}}, "phone"=>"1-463-123-4447", "website"=>"ramiro.info", "company"=>{"name"=>"Romaguera-Jacobson", "catchPhrase"=>"Face to face bifurcated interface", "bs"=>"e-enable strategic applications"}}}
+Filter chain halted as :is_authenticate_user? rendered or redirected
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 22:30:16 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Clementine Bauch", "username"=>"Samantha", "email"=>"Nathan@yesenia.net", "address"=>{"street"=>"Douglas Extension", "suite"=>"Suite 847", "city"=>"McKenziehaven", "zipcode"=>"59590-4157", "geo"=>{"lat"=>"-68.6102", "lng"=>"-47.0653"}}, "phone"=>"1-463-123-4447", "website"=>"ramiro.info", "company"=>{"name"=>"Romaguera-Jacobson", "catchPhrase"=>"Face to face bifurcated interface", "bs"=>"e-enable strategic applications"}, "user"=>{"name"=>"Clementine Bauch", "username"=>"Samantha", "email"=>"Nathan@yesenia.net", "address"=>{"street"=>"Douglas Extension", "suite"=>"Suite 847", "city"=>"McKenziehaven", "zipcode"=>"59590-4157", "geo"=>{"lat"=>"-68.6102", "lng"=>"-47.0653"}}, "phone"=>"1-463-123-4447", "website"=>"ramiro.info", "company"=>{"name"=>"Romaguera-Jacobson", "catchPhrase"=>"Face to face bifurcated interface", "bs"=>"e-enable strategic applications"}}}
+Filter chain halted as :is_authenticate_user? rendered or redirected
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/v1/users" for 127.0.0.1 at 2018-04-15 22:30:24 +0800
+Processing by V1::UsersController#create as */*
+  Parameters: {"name"=>"Clementine Bauch", "username"=>"Samantha", "email"=>"Nathan@yesenia.net", "address"=>{"street"=>"Douglas Extension", "suite"=>"Suite 847", "city"=>"McKenziehaven", "zipcode"=>"59590-4157", "geo"=>{"lat"=>"-68.6102", "lng"=>"-47.0653"}}, "phone"=>"1-463-123-4447", "website"=>"ramiro.info", "company"=>{"name"=>"Romaguera-Jacobson", "catchPhrase"=>"Face to face bifurcated interface", "bs"=>"e-enable strategic applications"}, "user"=>{"name"=>"Clementine Bauch", "username"=>"Samantha", "email"=>"Nathan@yesenia.net", "address"=>{"street"=>"Douglas Extension", "suite"=>"Suite 847", "city"=>"McKenziehaven", "zipcode"=>"59590-4157", "geo"=>{"lat"=>"-68.6102", "lng"=>"-47.0653"}}, "phone"=>"1-463-123-4447", "website"=>"ramiro.info", "company"=>{"name"=>"Romaguera-Jacobson", "catchPhrase"=>"Face to face bifurcated interface", "bs"=>"e-enable strategic applications"}}}
+  [1m[36mAdmin Load (0.5ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" = $1[0m  [["token", "0795e418-100f-41d9-a684-f6900f515379"]]
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "address", "phone", "website", "company") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Clementine Bauch"], ["username", "Samantha"], ["email", "Nathan@yesenia.net"], ["address", "{\"street\":\"Douglas Extension\",\"city\":\"McKenziehaven\",\"suite\":\"Suite 847\",\"zipcode\":\"59590-4157\",\"geo\":{\"lng\":\"-47.0653\",\"lat\":\"-68.6102\"}}"], ["phone", 1], ["website", "ramiro.info"], ["company", "{\"name\":\"Romaguera-Jacobson\",\"catchPhrase\":\"Face to face bifurcated interface\",\"bs\":\"e-enable strategic applications\"}"]]
+  [1m[35m (27.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 56ms (Views: 1.1ms | ActiveRecord: 33.5ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:30:35 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mAdmin Load (0.4ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" = $1[0m  [["token", "0795e418-100f-41d9-a684-f6900f515379"]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:31:20 +0800
+Processing by V1::UsersController#index as */*
+Filter chain halted as :is_authenticate_user? rendered or redirected
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/v1/users" for 127.0.0.1 at 2018-04-15 22:31:24 +0800
+Processing by V1::UsersController#index as */*
+  [1m[36mAdmin Load (0.4ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."token" = $1[0m  [["token", "0795e418-100f-41d9-a684-f6900f515379"]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 0.9ms)
+
+

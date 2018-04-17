@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  username: ubuntu
+  password: 123
+  pool: 5
+
+development:
+  <<: *default
+  database: app_development
+
+test:
+  <<: *default
+  database: app_test
+
+production:
+  <<: *default
+  database: app_production
